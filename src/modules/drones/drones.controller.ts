@@ -29,4 +29,12 @@ export class DronesController {
   ): Promise<Drone> {
     return this.dronesService.update(id, updateDroneDto);
   }
+
+  @Post('/:id/load')
+  loadMedicationOnDrone(
+    @Param('id') id: string,
+    @Body() { medicationIds }: { medicationIds: string[] },
+  ) {
+    return this.dronesService.loadMedicationsOntoDrone(id, medicationIds);
+  }
 }

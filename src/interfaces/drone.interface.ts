@@ -1,9 +1,12 @@
 import { Document } from 'mongoose';
+import { DroneModel, DroneState } from 'src/enums';
+import { Medication } from './medication.interface';
 
 export interface Drone extends Document {
   serialNumber: string;
-  weightModel: string;
+  weightModel: DroneModel;
   weightLimit: number;
   batteryCapacity: number;
-  state: string;
+  state: DroneState;
+  medications: (string | Medication)[];
 }
