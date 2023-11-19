@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
-import { EntitySchema } from '../enums/EntitySchema';
+import { EntitySchema } from '../enums';
 import { ModelDefinition } from '@nestjs/mongoose';
-import { DroneModel, DroneState } from 'src/enums';
+import { DroneModel, DroneState } from '../enums';
 
 export const DroneSchema = new mongoose.Schema(
   {

@@ -1,4 +1,4 @@
-import { DroneModel, DroneState } from 'src/enums';
+import { DroneModel, DroneState } from '../enums';
 import {
   IsString,
   IsInt,

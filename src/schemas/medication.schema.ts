@@ -1,6 +1,6 @@
 import { ModelDefinition } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { EntitySchema } from '../enums/EntitySchema';
+import { EntitySchema } from '../enums';
 
 export const MedicationSchema = new mongoose.Schema(
   {

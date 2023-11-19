@@ -1,30 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-  CreateMedicationDto,
-  UpdateMedicationDto,
-} from 'src/dtos/medication.dto';
-import { EntitySchema } from 'src/enums';
-import { Medication } from 'src/interfaces/medication.interface';
+import { CreateMedicationDto, UpdateMedicationDto } from '../../dtos';
+import { EntitySchema } from '../../enums';
+import { MedicationDocument } from '../../interfaces';
 
 @Injectable()
 export class MedicationsService {
   constructor(
     @InjectModel(EntitySchema.MEDICATION)
-    private medicationModel: Model<Medication>,
+    private medicationModel: Model<MedicationDocument>,
   ) {}
 
   async findOne(id: string) {
-    return this.medicationModel.findById(id).exec();
+    return this.medicationModel.findById(id);
   }
 
   async findMany(ids: string[]) {
-    return this.medicationModel.find({ _id: { $in: ids } }).exec();
+    return this.medicationModel.find({ _id: { $in: ids } });
   }
 
   async findAll() {
-    return this.medicationModel.find().exec();
+    return this.medicationModel.find();
   }
 
   async create(createMedicationDto: CreateMedicationDto) {
@@ -33,10 +30,10 @@ export class MedicationsService {
   }
 
   async update(id: string, updateMedicationDto: UpdateMedicationDto) {
-    this.medicationModel.findByIdAndUpdate(id, updateMedicationDto).exec();
+    this.medicationModel.findByIdAndUpdate(id, updateMedicationDto);
   }
 
   async remove(id: string): Promise<any> {
-    return this.medicationModel.findByIdAndRemove(id).exec();
+    return this.medicationModel.findByIdAndRemove(id);
   }
 }

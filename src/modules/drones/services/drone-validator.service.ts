@@ -1,19 +1,18 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { DroneState } from 'src/enums';
-import { Drone } from 'src/interfaces/drone.interface';
-import { Medication } from 'src/interfaces/medication.interface';
+import { DroneState, ExceptionValue } from '../../../enums';
+import { Drone, Medication } from '../../../interfaces';
 
 @Injectable()
 export class DroneValidatorService {
   validateBatteryLevelForLoad(drone: Drone) {
     if (drone.batteryCapacity < 25) {
-      throw new BadRequestException('Drone battery too low for loading');
+      throw new BadRequestException(ExceptionValue.DRONE_BATTERY_TOO_LOW);
     }
   }
 
-  validateStatusForLoad(drone: Drone) {
+  validateStateForLoad(drone: Drone) {
     if (![DroneState.IDLE, DroneState.LOADING].includes(drone.state)) {
-      throw new BadRequestException('Drone not in a loadable state');
+      throw new BadRequestException(ExceptionValue.DRONE_NOT_LOADABLE);
     }
   }
 
@@ -31,9 +30,7 @@ export class DroneValidatorService {
     );
 
     if (totalMedicationWeight + currentLoad > drone.weightLimit) {
-      throw new BadRequestException(
-        'Loading this medication would exceed drone weight limit',
-      );
+      throw new BadRequestException(ExceptionValue.DRONE_WEIGHT_EXCEEDED);
     }
   }
 }

@@ -7,10 +7,9 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateDroneDto, UpdateDroneDto } from 'src/dtos/drone.dto';
+import { CreateDroneDto, UpdateDroneDto } from '../../dtos';
 import { DronesService } from './drones.service';
-import { Drone } from 'src/interfaces/drone.interface';
-import { Medication } from 'src/interfaces/medication.interface';
+import { Drone, Medication } from '../../interfaces';
 
 @Controller('drones')
 export class DronesController {
@@ -47,8 +46,8 @@ export class DronesController {
 
   @Put('/:id')
   update(
-    @Body() updateDroneDto: UpdateDroneDto,
     @Param('id') id,
+    @Body() updateDroneDto: UpdateDroneDto,
   ): Promise<Drone> {
     return this.dronesService.update(id, updateDroneDto);
   }
