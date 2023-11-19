@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { MedicationsService } from './medications.service';
 import { CreateMedicationDto, UpdateMedicationDto } from '../../dtos';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('medications')
 @Controller('medications')
 export class MedicationsController {
   constructor(private medicationService: MedicationsService) {}

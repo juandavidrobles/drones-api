@@ -10,7 +10,9 @@ import {
 import { CreateDroneDto, UpdateDroneDto } from '../../dtos';
 import { DronesService } from './drones.service';
 import { Drone, Medication } from '../../interfaces';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('drones')
 @Controller('drones')
 export class DronesController {
   constructor(private dronesService: DronesService) {}
