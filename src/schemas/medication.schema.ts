@@ -6,7 +6,7 @@ export const MedicationSchema = new mongoose.Schema(
   {
     name: { type: String, maxLength: 200, minLength: 1 },
     weight: { type: Number, min: 0 },
-    code: { type: String, match: /^[A-Z0-9_]*$/ },
+    code: { type: String, match: /^[A-Z0-9_]*$/, unique: true },
     image: { type: String, match: /^https?:\/\/.*\.*/ },
   },
   {

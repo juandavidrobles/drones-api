@@ -8,6 +8,7 @@ export const DroneSchema = new mongoose.Schema(
     serialNumber: {
       type: String,
       maxLength: 100,
+      unique: true,
     },
     weightModel: {
       type: String,
