@@ -41,3 +41,8 @@ export class CreateDroneDto {
 }
 
 export class UpdateDroneDto extends PartialType(CreateDroneDto) {}
+
+export class LoadMedicationDto {
+  @ApiProperty()
+  medicationIds: string[];
+}

@@ -29,7 +29,7 @@ export const droneStubs = [
     serialNumber: 'SN001',
     weightModel: 'Lightweight',
     weightLimit: 100,
-    batteryCapacity: 80,
+    batteryCapacity: 20,
     state: 'IDLE',
     medications: [],
     createdAt: '2023-11-19T12:00:00.000Z',

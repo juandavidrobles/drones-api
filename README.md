@@ -4,45 +4,47 @@
 
 ## Requirements to run the project
 
-Node.js v18 (Tested with v18.18.2)
-Docker
+- Node.js v18 (Tested with v18.18.2)
+- Docker
 
 ## Installation
 
-Run a mongoDB instance locally:
+- Make sure docker desktop is running
+
+- Run a mongoDB instance locally:
 
 ```bash
-$ docker run --name some-mongo -p 27017:27017 -d mongo:ubuntu:22.04
+docker run --name drones-mongo -p 27017:27017 -d mongo:7.0.3
 ```
 
-Rename the `.env.example` file to `.env`
+- Rename the `.env.example` file to `.env`
+
+- Install dependencies
 
 ```bash
-$ npm install
+npm install
+```
+
+- Run the command load our database with dummy data
+
+```bash
+npm run seed
 ```
 
 ## Running the app
 
 ```bash
-# development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start:dev
 ```
 
-## Test
+- Open the swagger and start to play: http://localhost:3000/api/
+
+## Running the unites tests
 
 ```bash
 # unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run test
 ```
