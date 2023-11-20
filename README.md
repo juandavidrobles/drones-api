@@ -2,6 +2,38 @@
 
 ## Description
 
+API Rest to manage our fleet of drones following the specified requirements [here](./Code%20Challenge%20Drone.V1.pdf).
+
+### Endpoints
+
+#### 1. Drones
+
+- Get all drones - `GET /drones`
+
+- Get drone by id - `GET /drones/{id}`
+
+- Create a drone - `POST /drones`
+
+- Update a drone - `PUT /drones/{id}`
+
+- Get loaded medication onto drone - `GET /drones/{id}`
+
+- Get available drones for loading - `GET /drones/available-for-loading`
+
+- Load medication onto drone - `PUT /drones/{id}/load`
+
+- Remove medications from drone - `PUT /drones/{id}/remove-load`
+
+### 2. Medications
+
+- Get all medications - `GET /medications`
+
+- Get medication by id - `GET /medications/{id}`
+
+- Create a medication - `POST /medications`
+
+- Update a medication - `PUT /medications/{id}`
+
 ## Requirements to run the project
 
 - Node.js v18 (Tested with v18.18.2)

@@ -10,7 +10,13 @@ import {
 import { CreateDroneDto, LoadMedicationDto, UpdateDroneDto } from '../../dtos';
 import { DronesService } from './drones.service';
 import { Drone, Medication } from '../../interfaces';
-import { ApiBody, ApiOperation, ApiTags, PartialType } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiTags,
+  PartialType,
+} from '@nestjs/swagger';
 
 @ApiTags('drones')
 @Controller('drones')
@@ -59,6 +65,7 @@ export class DronesController {
 
   @ApiOperation({ summary: 'Update a drone', description: 'Update a drone' })
   @ApiBody({ type: PartialType(CreateDroneDto) })
+  @ApiParam({ name: 'id', type: 'string' })
   @Put('/:id')
   update(
     @Param('id') id,
@@ -71,11 +78,20 @@ export class DronesController {
     summary: 'Load medications onto drone',
     description: 'Load medications onto drone',
   })
-  @Post('/:id/load')
+  @Put('/:id/load')
   loadMedicationOnDrone(
     @Param('id') id: string,
     @Body() { medicationIds }: LoadMedicationDto,
   ) {
     return this.dronesService.loadMedicationsOntoDrone(id, medicationIds);
+  }
+
+  @ApiOperation({
+    summary: 'Remove medications from drone',
+    description: 'Remove medications from drone',
+  })
+  @Put('/:id/remove-load')
+  removeMedicationFromDrone(@Param('id') id: string) {
+    return this.dronesService.removeDroneLoad(id);
   }
 }

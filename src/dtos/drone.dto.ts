@@ -7,6 +7,7 @@ import {
   Max,
   Length,
   IsEnum,
+  IsArray,
 } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
 import { ApiProperty } from '@nestjs/swagger';
@@ -44,5 +45,6 @@ export class UpdateDroneDto extends PartialType(CreateDroneDto) {}
 
 export class LoadMedicationDto {
   @ApiProperty()
+  @IsArray()
   medicationIds: string[];
 }

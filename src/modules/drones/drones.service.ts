@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   InternalServerErrorException,
@@ -86,7 +87,12 @@ export class DronesService {
 
     this.droneValidatorService.validateBatteryLevelForLoad(drone);
     this.droneValidatorService.validateStateForLoad(drone);
-    const medications = await this.medicationsService.findMany(medicationIds);
+    const medications = await this.medicationsService
+      .findMany(medicationIds)
+      .catch(() => {
+        throw new BadRequestException('Medication ids not valid');
+      });
+
     this.droneValidatorService.validateMedicationsWeightCanBeLoaded(
       drone,
       medications,
@@ -112,5 +118,22 @@ export class DronesService {
         }
       }
     }
+  }
+
+  async removeDroneLoad(id: string) {
+    const drone = await this.findOne(id).catch(() => {
+      throw new BadRequestException('Drone not found');
+    });
+    if (
+      ![DroneState.IDLE, DroneState.LOADING, DroneState.LOADED].includes(
+        drone.state,
+      )
+    ) {
+      throw new BadRequestException(
+        'Drone is not in either IDLE, LOADING or LOADED state',
+      );
+    }
+    drone.medications = [];
+    return drone.save();
   }
 }
