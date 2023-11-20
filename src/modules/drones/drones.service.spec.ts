@@ -103,7 +103,7 @@ describe('DronesService', () => {
       .mockReturnValue();
     jest
       .spyOn(medicationsService, 'findMany')
-      .mockReturnValue((() => []) as any);
+      .mockResolvedValue((() => []) as any);
     jest.spyOn(droneModel, 'save').mockResolvedValue(droneStub);
     jest.spyOn(service, 'findOne').mockResolvedValue({ save: () => {} } as any);
 

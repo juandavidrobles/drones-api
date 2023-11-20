@@ -74,7 +74,7 @@ npm run start:dev
 
 - Open the swagger and start to play: http://localhost:3000/api/
 
-## Running the unites tests
+## Running the unit tests
 
 ```bash
 # unit tests
