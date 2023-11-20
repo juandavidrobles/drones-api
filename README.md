@@ -4,6 +4,18 @@
 
 API Rest to manage our fleet of drones following the specified requirements [here](./Code%20Challenge%20Drone.V1.pdf).
 
+## Public API
+
+The API Rest is hosted in the cloud and publicly accessible:
+
+- https://drones-api-production.up.railway.app/
+
+## Public Swagger
+
+The app was published publicly and can be accessed here
+
+- https://drones-api-production.up.railway.app/api
+
 ### Endpoints
 
 #### 1. Drones
@@ -72,7 +84,7 @@ npm run start
 npm run start:dev
 ```
 
-- Open the swagger and start to play: http://localhost:3000/api/
+- Open the swagger locally and start to play: http://localhost:3000/api/
 
 ## Running the unit tests
 
